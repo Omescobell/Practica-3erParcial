@@ -4,29 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gestión de Alumnos</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-  <div class="container py-5">
-    <h1 class="text-center mb-4"> Lista de Alumnos</h1>
+
+ <div class="container py-5">
+    <h1 class="text-center mb-4">Gestión de Alumnos</h1>
 
     <!-- Formulario de inserción -->
     <div class="card p-4 shadow-sm mb-4">
       <h4>Agregar alumno</h4>
+
       <form id="alumnoForm">
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" id="nombre" class="form-control" required />
+          <input type="text" id="nombre" class="form-control" required>
         </div>
+
         <div class="mb-3">
           <label for="edad" class="form-label">Edad</label>
-          <input type="number" id="edad" class="form-control" required />
+          <input type="number" id="edad" class="form-control" required>
         </div>
+
         <div class="mb-3">
           <label for="curso" class="form-label">Curso</label>
-          <input type="text" id="curso" class="form-control" />
+          <input type="text" id="curso" class="form-control">
         </div>
+
         <button type="submit" class="btn btn-primary">Agregar</button>
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalModificar">Modificar</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminar">Eliminar</button>
       </form>
     </div>
 
@@ -47,6 +54,61 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Modal Eliminar -->
+  <div class="modal fade" id="modalEliminar" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Eliminar alumno</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <label>ID a eliminar:</label>
+          <input type="number" id="idEliminar" class="form-control">
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-danger" onclick="confirmarEliminar()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Modificar -->
+  <div class="modal fade" id="modalModificar" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modificar alumno</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <label>ID a modificar:</label>
+          <input type="number" id="idModificar" class="form-control mb-3">
+
+          <label>Nuevo nombre:</label>
+          <input type="text" id="nombreModificar" class="form-control mb-3">
+
+          <label>Nueva edad:</label>
+          <input type="number" id="edadModificar" class="form-control mb-3">
+
+          <label>Nuevo curso:</label>
+          <input type="text" id="cursoModificar" class="form-control mb-3">
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-primary" onclick="confirmarModificar()">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
